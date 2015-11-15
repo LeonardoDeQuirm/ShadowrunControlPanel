@@ -84,18 +84,24 @@ public final class DiceRoller {
         else if (hackCatChoice == 2) {
             int sleazeChoice = sleazeChoice();
             while (sleazeChoice != -1) {
-                if (sleazeChoice == 1 || sleazeChoice == 3
-                        || sleazeChoice == 4) {
-                    hackShit(logic + cybercombat);
+                if (sleazeChoice == 1) { //Check Overwatch
+                    hackShit(logic + eWarfare);
                     sleazeChoice = sleazeChoice();
-                } else if (sleazeChoice == 2) {
-                    hackShit(hacking + logic);
+                } else if (sleazeChoice == 2 || sleazeChoice == 5
+                        || sleazeChoice == 7) { //Control Device OR Hide OR Snoop
+                    hackShit(eWarfare + intuition);
                     sleazeChoice = sleazeChoice();
-                } else if (sleazeChoice == 5) {
+                } else if (sleazeChoice == 3) { //Format Device
                     hackShit(computer + logic);
                     sleazeChoice = sleazeChoice();
-                } else if (sleazeChoice == 6) {
-                    hackShit(eWarfare + logic);
+                } else if (sleazeChoice == 4) { //Hack On The Fly
+                    hackShit(hacking + logic);
+                    sleazeChoice = sleazeChoice();
+                } else if (sleazeChoice == 6) { //Data Bomb
+                    hackShit(software + logic);
+                    sleazeChoice = sleazeChoice();
+                } else if (sleazeChoice == 8) { //Spoof Command
+                    hackShit(hacking + intuition);
                     sleazeChoice = sleazeChoice();
                 } else {
                     System.out.println("ERR 0xP3:8K:AC");
@@ -111,17 +117,15 @@ public final class DiceRoller {
         else if (hackCatChoice == 3) {
             int dataChoice = dataChoice();
             while (dataChoice != -1) {
-                if (dataChoice == 1 || dataChoice == 3 || dataChoice == 4) {
-                    hackShit(logic + cybercombat);
+                if (dataChoice == 1 || dataChoice == 5) {
+                    hackShit(logic + computer); //Edit file OR Reboot Device
                     dataChoice = dataChoice();
                 } else if (dataChoice == 2) {
-                    hackShit(hacking + logic);
+                    hackShit(eWarfare + logic); //Enter Rigged Device
                     dataChoice = dataChoice();
-                } else if (dataChoice == 5) {
-                    hackShit(computer + logic);
-                    dataChoice = dataChoice();
-                } else if (dataChoice == 6) {
-                    hackShit(eWarfare + logic);
+                } else if (dataChoice == 3 || dataChoice == 4
+                        || dataChoice == 6) {
+                    hackShit(computer + intuition); //Matrix Perception OR Matrix Search OR Trace Icon
                     dataChoice = dataChoice();
                 } else {
                     System.out.println("ERR 0xP3:8K:AC");
