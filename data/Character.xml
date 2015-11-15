@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='us-ascii'?>
+<character name="Darkwolf">
+	<attributes>
+		<willpower>5</willpower>
+		<logic>8</logic>
+		<intuition>5</intuition>
+		<reaction>4</reaction>
+		<edgeStat>3</edgeStat> 
+	</attributes>
+
+	<skills>
+		<cybercombat>5</cybercombat>
+		<eWarfare>5</eWarfare>
+		<hacking>5</hacking> 
+		<computer>6</computer>
+		<hardware>6</hardware>
+		<software>6</software>
+	</skills>
+</character>
