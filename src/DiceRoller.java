@@ -16,8 +16,8 @@ public final class DiceRoller {
     static Scanner reader = new Scanner(System.in);
 
     //Attributes
-    final static int will = 5;
-    final static int log = 8;
+    final static int willpower = 5;
+    final static int logic = 8;
     final static int intuition = 5;
     final static int reaction = 4;
     final static int edgeStat = 3;
@@ -60,16 +60,16 @@ public final class DiceRoller {
             while (attackChoice != -1) {
                 if (attackChoice == 1 || attackChoice == 3
                         || attackChoice == 4) {
-                    hackShit(log + cybercombat);
+                    hackShit(logic + cybercombat);
                     attackChoice = attackChoice();
                 } else if (attackChoice == 2) {
-                    hackShit(hacking + log);
+                    hackShit(hacking + logic);
                     attackChoice = attackChoice();
                 } else if (attackChoice == 5) {
-                    hackShit(computer + log);
+                    hackShit(computer + logic);
                     attackChoice = attackChoice();
                 } else if (attackChoice == 6) {
-                    hackShit(eWarfare + log);
+                    hackShit(eWarfare + logic);
                     attackChoice = attackChoice();
                 } else {
                     System.out.println("ERR 0xP3:8K:AC");
@@ -86,16 +86,16 @@ public final class DiceRoller {
             while (sleazeChoice != -1) {
                 if (sleazeChoice == 1 || sleazeChoice == 3
                         || sleazeChoice == 4) {
-                    hackShit(log + cybercombat);
+                    hackShit(logic + cybercombat);
                     sleazeChoice = sleazeChoice();
                 } else if (sleazeChoice == 2) {
-                    hackShit(hacking + log);
+                    hackShit(hacking + logic);
                     sleazeChoice = sleazeChoice();
                 } else if (sleazeChoice == 5) {
-                    hackShit(computer + log);
+                    hackShit(computer + logic);
                     sleazeChoice = sleazeChoice();
                 } else if (sleazeChoice == 6) {
-                    hackShit(eWarfare + log);
+                    hackShit(eWarfare + logic);
                     sleazeChoice = sleazeChoice();
                 } else {
                     System.out.println("ERR 0xP3:8K:AC");
@@ -112,16 +112,16 @@ public final class DiceRoller {
             int dataChoice = dataChoice();
             while (dataChoice != -1) {
                 if (dataChoice == 1 || dataChoice == 3 || dataChoice == 4) {
-                    hackShit(log + cybercombat);
+                    hackShit(logic + cybercombat);
                     dataChoice = dataChoice();
                 } else if (dataChoice == 2) {
-                    hackShit(hacking + log);
+                    hackShit(hacking + logic);
                     dataChoice = dataChoice();
                 } else if (dataChoice == 5) {
-                    hackShit(computer + log);
+                    hackShit(computer + logic);
                     dataChoice = dataChoice();
                 } else if (dataChoice == 6) {
-                    hackShit(eWarfare + log);
+                    hackShit(eWarfare + logic);
                     dataChoice = dataChoice();
                 } else {
                     System.out.println("ERR 0xP3:8K:AC");
@@ -134,17 +134,90 @@ public final class DiceRoller {
 
         }
 
-        else {
+        else if (hackCatChoice == 4) {
+            System.out.println("HOW LONG DO YOU HAVE TO CODE?");
+            int time_limit = reader.nextInt();
+
+            System.out.println(
+                    "HOW DIFFICULT IS THE CODING (THRESHOLD OF TEST)?");
+            int goal = reader.nextInt();
+
+            if (time_limit == 0 || goal == 0) {
+                System.out.println(
+                        "YOU'RE NOT FASTJACK, YOU CAN'T BREAK MATH...");
+                deck();
+            } else {
+                int progress = 0;
+                int time = 0;
+
+                while (progress < goal && time <= time_limit) {
+                    int store = coding(software + logic);
+                    if (store < 0) {
+                        if (store == -2) {
+                            System.out.println(
+                                    "A CRITICAL ERROR HAS OCCURED. ALL SOFTWARE PROGRESS HAS BEEN LOST");
+                            progress = 0;
+                        } else if (store == -1) {
+                            System.out.println(
+                                    "PROGRAM HAS DETECTED CORRUPTED SECTORS ON DISK, SOME DATA MAY BE UNRECOVERABLE");
+                            progress /= 2;
+                        }
+                    } else {
+                        progress += store;
+                    }
+                    System.out.println(
+                            "DAY " + time + ": " + progress + "/" + goal);
+                    time++;
+                }
+                if (time > time_limit && progress < goal) {
+                    System.out.println(
+                            "SUFFICIENT PROGRESS NOT OBTAINED IN PROVIDED TIME FRAME");
+                } else {
+                    System.out.println("CODING COMPLETED ON DAY " + time);
+                }
+            }
+        }
+
+        else
+
+        {
             System.out.println("YOU HAVE REACHED THE FORBIDDEN ZONE. GO AWAY");
             deck();
         }
+
         deck();
+
+    }
+
+    private static int coding(int numDice) {
+        int hitCount = 0;
+        int glitch = 0;
+        Random edge = new Random();
+        for (int i = 1; i <= numDice; i++) {
+            int roll = edge.nextInt(6) + 1;
+            if (roll >= 5) {
+                hitCount++;
+            } else if (roll == 1) {
+                glitch++;
+            }
+        }
+        if (glitch > numDice / 2) {
+            if (hitCount == 0) {
+                return -2; //CRITICAL GLITCH, YOU'RE FUCKED
+            } else {
+                return -1; //GLITCH, THAT AIN'T GOOD
+            }
+        }
+
+        return hitCount;
     }
 
     private static int catChoicePrompt() {
         System.out.println("(1) SMASH THE FRONT DOOR"); //Attack
         System.out.println("(2) SNEAK THROUGH THE BACK DOOR"); //Sleaze
         System.out.println("(3) PROCESS THE DATA"); //Data Processing
+        System.out.println("(4) CODE SOME WIZ SOFTWARE"); //Software coding
+
         System.out.println("(-1) JACK OUT");
 
         int choice = reader.nextInt();
